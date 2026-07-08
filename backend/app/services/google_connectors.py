@@ -153,8 +153,11 @@ def sync_gmail(email):
 def sync_calendar(email):
     token = get_access_token(email)
     now = datetime.now(timezone.utc)
-    time_min = (now - timedelta(hours=12)).isoformat()
-    time_max = (now + timedelta(days=7)).isoformat()
+    start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    end_of_today = start_of_today + timedelta(days=1)
+
+    time_min = start_of_today.isoformat()
+    time_max = end_of_today.isoformat()
     inserted = 0
     with httpx.Client(timeout=30) as client:
         r = client.get("https://www.googleapis.com/calendar/v3/users/me/calendarList",
