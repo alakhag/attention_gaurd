@@ -29,27 +29,83 @@ def classify_mock(source, app_name, sender, title, body) -> Classification:
     text = f"{source or ''} {app_name or ''} {sender or ''} {title or ''} {body or ''}".lower()
 
     if any(x in text for x in ["liked your", "commented", "started following", "recommended", "sale", "coupon", "deal"]):
-        return Classification(False, "ignore", "none", 0.95, "Passive social/promotional noise.", "No action.")
+        return Classification(
+            needs_attention=False,
+            category="ignore",
+            urgency="none",
+            confidence=0.95,
+            reason="Passive social/promotional noise.",
+            recommended_action="No action."
+        )
 
     if any(x in text for x in ["payment", "rent", "declined", "overdue", "did not go through", "didn't go through", "account locked", "suspicious transaction", "bill due", "past due"]):
-        return Classification(True, "bills_payment", "today", 0.9, "Payment, bill, rent, bank, or account issue.", "Open and verify.")
+        return Classification(
+            needs_attention=True,
+            category="bills_payment",
+            urgency="today",
+            confidence=0.90,
+            reason="Payment, bill, rent, bank, or account issue.",
+            recommended_action="Open and verify."
+        )
 
     if any(x in text for x in ["available", "around later", "meet", "reschedule", "moved", "cancelled", "canceled", "calendar", "free later", "invitation", "accepted:", "declined:"]):
-        return Classification(True, "scheduling", "today", 0.86, "Scheduling, calendar, or availability item.", "Review schedule.")
+        return Classification(
+            needs_attention=True,
+            category="scheduling",
+            urgency="today",
+            confidence=0.86,
+            reason="Scheduling, calendar, or availability item.",
+            recommended_action="Review schedule."
+        )
 
     if any(x in text for x in ["uscis", "attorney", "lawyer", "immigration", "h1b", "h-1b", "o1", "o-1", "opt", "payroll", "offer letter", "hr"]):
-        return Classification(True, "work_immigration_legal", "today", 0.9, "Work, legal, immigration, HR, or payroll item.", "Review soon.")
+        return Classification(
+            needs_attention=True,
+            category="work_immigration_legal",
+            urgency="today",
+            confidence=0.90,
+            reason="Work, legal, immigration, HR, or payroll item.",
+            recommended_action="Review soon."
+        )
 
-    if any(x in text for x in ["otp", "verification code", "password reset", "login", "sign-in", "suspicious"]):
-        return Classification(True, "security_login_otp", "now", 0.82, "Login/security/OTP item.", "Verify if expected.")
+    if any(x in text for x in ["otp", "verification code", "password reset", "login", "sign-in", "suspicious", "security alert", "new sign-in"]):
+        return Classification(
+            needs_attention=True,
+            category="security_login_otp",
+            urgency="now",
+            confidence=0.82,
+            reason="Login, security, or OTP item.",
+            recommended_action="Verify if expected."
+        )
 
     if any(x in text for x in ["urgent", "doctor", "hospital", "bp", "blood pressure", "emergency", "flight issue", "call immediately"]):
-        return Classification(True, "health_family_urgent", "now", 0.9, "Urgent health/family/travel signal.", "Check now.")
+        return Classification(
+            needs_attention=True,
+            category="health_family_urgent",
+            urgency="now",
+            confidence=0.90,
+            reason="Urgent health, family, or travel signal.",
+            recommended_action="Check now."
+        )
 
-    if any(x in text for x in ["?", "can you", "could you", "please", "call me", "reply", "confirm", "let me know", "when free"]):
-        return Classification(True, "real_person_waiting", "today", 0.78, "Someone may be asking for response/action.", "Reply when available.")
+    if any(x in text for x in ["?", "can you", "could you", "please", "call me", "reply", "confirm", "let me know", "when free", "please join now", "join now"]):
+        return Classification(
+            needs_attention=True,
+            category="real_person_waiting",
+            urgency="today",
+            confidence=0.78,
+            reason="Someone may be asking for response/action.",
+            recommended_action="Reply or review when available."
+        )
 
-    return Classification(False, "fyi", "none", 0.6, "No clear action needed.", "No immediate action.")
+    return Classification(
+        needs_attention=False,
+        category="fyi",
+        urgency="none",
+        confidence=0.60,
+        reason="No clear action needed.",
+        recommended_action="No immediate action."
+    )
 
 def classify_openai(source, app_name, sender, title, body) -> Classification:
     api_key = os.getenv("OPENAI_API_KEY")
@@ -88,11 +144,14 @@ def classify_openai(source, app_name, sender, title, body) -> Classification:
         }
     }
     with httpx.Client(timeout=20) as client:
-        r = client.post("https://api.openai.com/v1/responses",
+        r = client.post(
+            "https://api.openai.com/v1/responses",
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            json=payload)
+            json=payload
+        )
         r.raise_for_status()
         data = r.json()
+
     text = data.get("output_text")
     if not text:
         for item in data.get("output", []):
@@ -100,5 +159,7 @@ def classify_openai(source, app_name, sender, title, body) -> Classification:
                 if content.get("type") in ["output_text", "text"]:
                     text = content.get("text")
                     break
-            if text: break
+            if text:
+                break
+
     return Classification(**json.loads(text))
