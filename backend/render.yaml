@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: attention-guard-realtime
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CLASSIFIER_PROVIDER
+        value: mock
+      - key: DB_PATH
+        value: /tmp/attention_guard.db
