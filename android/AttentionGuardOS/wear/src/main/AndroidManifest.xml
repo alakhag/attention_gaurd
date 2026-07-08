@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.type.watch"/>
-    <application android:label="Attention Guard" android:icon="@drawable/ic_attention_guard" android:theme="@style/WearTheme" android:allowBackup="false">
+    <application android:label="Attention Guard" android:icon="@drawable/complication_icon" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false">
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

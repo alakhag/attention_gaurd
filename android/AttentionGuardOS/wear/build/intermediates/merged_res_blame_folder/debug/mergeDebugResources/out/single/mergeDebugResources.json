@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.attentionguard.wear-debug-24:/drawable_complication_icon.xml.flat",
+        "source": "com.attentionguard.wear-main-26:/drawable/complication_icon.xml"
+    }
+]

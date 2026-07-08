@@ -1,0 +1,308 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:1:1-32:12
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:1:1-32:12
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/98ebfed806010f6a06f8306343c46d4d/transformed/jetified-watchface-complications-1.2.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.preference:preference:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/a124eb8f9280ea5c81fa299a1444c84a/transformed/preference-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/0b185e5fb7e7eb69daa373bdf1fe16c4/transformed/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/74ee14ddc2649dea7c7dc9f9d94ba959/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/edb8b9c14f043428574e8b459f258be3/transformed/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/0eb5f948fd2446da327451eb08ddcd05/transformed/jetified-protolayout-expression-1.0.0-beta01/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/cc375008c7227e2f58917d3949085298/transformed/jetified-protolayout-expression-pipeline-1.0.0-beta01/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/fd241fafdf6f7c7abffd534996a49c00/transformed/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/50d18d2fbaaf182400a3e4d490e2060d/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/fa113c14051392e0cf5cab2df2edf2e7/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/c0be53a0259100626e9cf36cac991e39/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d50b26f2176863b998874d77d5314c60/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/2642a260ae3c50b0a2d8b4d67dc53b1e/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e84796990c49d4fc53292b54b3e6f4dc/transformed/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/41c15a8b6ff05b103c47155a2627c467/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/ee709698f3c9f310f295df93fb01cd1d/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/0a0f7aef349fd7f7679ca2e349beac2e/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/705b954883ee675d40011ef2133bf672/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/bbd3d722b28a9ddbbc8a7ffc8e989961/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9f4bb8c18dfd96afdc40ab7645fbbc1e/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/7742977bc0b18e8bcdcfd584e62f8439/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.core:core-ktx:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/f0edb0142b0bf219c7eaa373c023a328/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/alakh/.gradle/caches/9.3.0/transforms/0af34f27e1d1cec3a50d200a76cf53e8/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/8238c45df1f80ad5931fcd6c918e1e4b/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/c267c30f6e172241f9459564139f3c77/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/851dc6fe74c9706e1969215291422c40/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3c12e3e070aeef8af431dcbbd5e736ef/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/d821592398d91251e99a76bd0115b919/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/8c50e042bd4bc9f3a4ab1a52d779b847/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/9e4aa2d9309ae73274016f1991ca3c9d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alakh/.gradle/caches/9.3.0/transforms/c7988b39426535dd37698c8f3d360e76/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e6b025158c4b697f0584b57541c7ad59/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3fd93841cfb0e437b357476552451492/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/641833f8c4493d64ecb5b25c61ab92c1/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d843b241f48da8dfe41cb8de0654ec3a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9ae3611845bee01fb6ccde971354fe69/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:2:5-66
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:2:22-64
+uses-feature#android.hardware.type.watch
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:3:5-63
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:3:19-61
+application
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:5-31:19
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:5-31:19
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:7:5-11:19
+MERGED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/9e4aa2d9309ae73274016f1991ca3c9d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/9e4aa2d9309ae73274016f1991ca3c9d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:label
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:18-49
+	android:icon
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:50-92
+	android:allowBackup
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:151-178
+	android:theme
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:93-150
+activity#com.attentionguard.wear.MainActivity
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:9-10:20
+	android:exported
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:48-71
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:6:13-9:29
+action#android.intent.action.MAIN
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:7:17-68
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:7:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:8:17-76
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:8:27-74
+service#com.attentionguard.wear.AttentionComplicationDataSourceService
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:12:9-29:19
+	android:label
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:15:13-44
+	android:exported
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:14:13-36
+	android:permission
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:17:13-99
+	android:icon
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:16:13-55
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:13:13-67
+intent-filter#action:name:android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:18:13-20:29
+action#android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:19:17-116
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:19:25-113
+meta-data#android.support.wearable.complications.SUPPORTED_TYPES
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:22:13-24:56
+	android:value
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:24:17-53
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:23:17-86
+meta-data#android.support.wearable.complications.UPDATE_PERIOD_SECONDS
+ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:26:13-28:39
+	android:value
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:28:17-36
+	android:name
+		ADDED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:27:17-92
+uses-sdk
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/98ebfed806010f6a06f8306343c46d4d/transformed/jetified-watchface-complications-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/98ebfed806010f6a06f8306343c46d4d/transformed/jetified-watchface-complications-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.preference:preference:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/a124eb8f9280ea5c81fa299a1444c84a/transformed/preference-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.preference:preference:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/a124eb8f9280ea5c81fa299a1444c84a/transformed/preference-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/0b185e5fb7e7eb69daa373bdf1fe16c4/transformed/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/0b185e5fb7e7eb69daa373bdf1fe16c4/transformed/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/74ee14ddc2649dea7c7dc9f9d94ba959/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/74ee14ddc2649dea7c7dc9f9d94ba959/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/edb8b9c14f043428574e8b459f258be3/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/edb8b9c14f043428574e8b459f258be3/transformed/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/0eb5f948fd2446da327451eb08ddcd05/transformed/jetified-protolayout-expression-1.0.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/0eb5f948fd2446da327451eb08ddcd05/transformed/jetified-protolayout-expression-1.0.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/cc375008c7227e2f58917d3949085298/transformed/jetified-protolayout-expression-pipeline-1.0.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [androidx.wear.protolayout:protolayout-expression-pipeline:1.0.0-beta01] /home/alakh/.gradle/caches/9.3.0/transforms/cc375008c7227e2f58917d3949085298/transformed/jetified-protolayout-expression-pipeline-1.0.0-beta01/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/fd241fafdf6f7c7abffd534996a49c00/transformed/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/fd241fafdf6f7c7abffd534996a49c00/transformed/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/50d18d2fbaaf182400a3e4d490e2060d/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/50d18d2fbaaf182400a3e4d490e2060d/transformed/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/fa113c14051392e0cf5cab2df2edf2e7/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/fa113c14051392e0cf5cab2df2edf2e7/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/c0be53a0259100626e9cf36cac991e39/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/c0be53a0259100626e9cf36cac991e39/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d50b26f2176863b998874d77d5314c60/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d50b26f2176863b998874d77d5314c60/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/2642a260ae3c50b0a2d8b4d67dc53b1e/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/2642a260ae3c50b0a2d8b4d67dc53b1e/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e84796990c49d4fc53292b54b3e6f4dc/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e84796990c49d4fc53292b54b3e6f4dc/transformed/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/41c15a8b6ff05b103c47155a2627c467/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/41c15a8b6ff05b103c47155a2627c467/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/ee709698f3c9f310f295df93fb01cd1d/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/alakh/.gradle/caches/9.3.0/transforms/ee709698f3c9f310f295df93fb01cd1d/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/0a0f7aef349fd7f7679ca2e349beac2e/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/0a0f7aef349fd7f7679ca2e349beac2e/transformed/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/705b954883ee675d40011ef2133bf672/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/705b954883ee675d40011ef2133bf672/transformed/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/bbd3d722b28a9ddbbc8a7ffc8e989961/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/bbd3d722b28a9ddbbc8a7ffc8e989961/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9f4bb8c18dfd96afdc40ab7645fbbc1e/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9f4bb8c18dfd96afdc40ab7645fbbc1e/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/7742977bc0b18e8bcdcfd584e62f8439/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/7742977bc0b18e8bcdcfd584e62f8439/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/f0edb0142b0bf219c7eaa373c023a328/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/f0edb0142b0bf219c7eaa373c023a328/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/alakh/.gradle/caches/9.3.0/transforms/0af34f27e1d1cec3a50d200a76cf53e8/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /home/alakh/.gradle/caches/9.3.0/transforms/0af34f27e1d1cec3a50d200a76cf53e8/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/8238c45df1f80ad5931fcd6c918e1e4b/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/8238c45df1f80ad5931fcd6c918e1e4b/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/c267c30f6e172241f9459564139f3c77/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/c267c30f6e172241f9459564139f3c77/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/851dc6fe74c9706e1969215291422c40/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/851dc6fe74c9706e1969215291422c40/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3c12e3e070aeef8af431dcbbd5e736ef/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3c12e3e070aeef8af431dcbbd5e736ef/transformed/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/d821592398d91251e99a76bd0115b919/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /home/alakh/.gradle/caches/9.3.0/transforms/d821592398d91251e99a76bd0115b919/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/8c50e042bd4bc9f3a4ab1a52d779b847/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/8c50e042bd4bc9f3a4ab1a52d779b847/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/9e4aa2d9309ae73274016f1991ca3c9d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/9e4aa2d9309ae73274016f1991ca3c9d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alakh/.gradle/caches/9.3.0/transforms/c7988b39426535dd37698c8f3d360e76/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/alakh/.gradle/caches/9.3.0/transforms/c7988b39426535dd37698c8f3d360e76/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e6b025158c4b697f0584b57541c7ad59/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/e6b025158c4b697f0584b57541c7ad59/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3fd93841cfb0e437b357476552451492/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/3fd93841cfb0e437b357476552451492/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/641833f8c4493d64ecb5b25c61ab92c1/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/641833f8c4493d64ecb5b25c61ab92c1/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d843b241f48da8dfe41cb8de0654ec3a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/d843b241f48da8dfe41cb8de0654ec3a/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9ae3611845bee01fb6ccde971354fe69/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/alakh/.gradle/caches/9.3.0/transforms/9ae3611845bee01fb6ccde971354fe69/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml
+uses-library#com.google.android.wearable
+ADDED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:8:9-10:40
+MERGED from [androidx.wear.watchface:watchface-complications-data-source:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/831c079341118bd559ef43aa84c42980/transformed/jetified-watchface-complications-data-source-1.2.1/AndroidManifest.xml:8:9-10:40
+	android:required
+		ADDED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:10:13-37
+	android:name
+		ADDED from [androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:9:13-55
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.attentionguard.wear.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.attentionguard.wear.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /home/alakh/.gradle/caches/9.3.0/transforms/ad237b42cc7be13be3a7b0767ca1f6ec/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92

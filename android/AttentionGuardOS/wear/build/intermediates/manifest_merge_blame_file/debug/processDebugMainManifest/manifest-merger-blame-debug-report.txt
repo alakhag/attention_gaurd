@@ -1,0 +1,158 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.attentionguard.wear"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="28"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:2:5-66
+11-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:2:22-64
+12
+13    <uses-feature android:name="android.hardware.type.watch" />
+13-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:3:5-63
+13-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:3:19-61
+14
+15    <permission
+15-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+16        android:name="com.attentionguard.wear.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+16-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+17        android:protectionLevel="signature" />
+17-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+18
+19    <uses-permission android:name="com.attentionguard.wear.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+19-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+19-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+20
+21    <application
+21-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:5-31:19
+22        android:allowBackup="false"
+22-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:151-178
+23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+23-->[androidx.core:core:1.13.1] /home/alakh/.gradle/caches/9.3.0/transforms/68f2668ec1832bb3ce369a1bc559b540/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:icon="@drawable/complication_icon"
+26-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:50-92
+27        android:label="Attention Guard"
+27-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:18-49
+28        android:testOnly="true"
+29        android:theme="@android:style/Theme.Material.NoActionBar" >
+29-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:4:93-150
+30        <activity
+30-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:9-10:20
+31            android:name="com.attentionguard.wear.MainActivity"
+31-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:19-47
+32            android:exported="true" >
+32-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:5:48-71
+33            <intent-filter>
+33-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:6:13-9:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:7:17-68
+34-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:7:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:8:17-76
+36-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:8:27-74
+37            </intent-filter>
+38        </activity>
+39
+40        <service
+40-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:12:9-29:19
+41            android:name="com.attentionguard.wear.AttentionComplicationDataSourceService"
+41-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:13:13-67
+42            android:exported="true"
+42-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:14:13-36
+43            android:icon="@drawable/complication_icon"
+43-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:16:13-55
+44            android:label="Attention Guard"
+44-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:15:13-44
+45            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER" >
+45-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:17:13-99
+46            <intent-filter>
+46-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:18:13-20:29
+47                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+47-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:19:17-116
+47-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:19:25-113
+48            </intent-filter>
+49
+50            <meta-data
+50-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:22:13-24:56
+51                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+51-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:23:17-86
+52                android:value="SHORT_TEXT,LONG_TEXT" />
+52-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:24:17-53
+53            <meta-data
+53-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:26:13-28:39
+54                android:name="android.support.wearable.complications.UPDATE_PERIOD_SECONDS"
+54-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:27:17-92
+55                android:value="300" />
+55-->/home/alakh/Downloads/attention_os_v1/android/AttentionGuardOS/wear/src/main/AndroidManifest.xml:28:17-36
+56        </service>
+57
+58        <uses-library
+58-->[androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:8:9-10:40
+59            android:name="com.google.android.wearable"
+59-->[androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:9:13-55
+60            android:required="false" />
+60-->[androidx.wear.watchface:watchface-complications-data:1.2.1] /home/alakh/.gradle/caches/9.3.0/transforms/110230ac6884cbfe40cae0ec048507c4/transformed/jetified-watchface-complications-data-1.2.1/AndroidManifest.xml:10:13-37
+61
+62        <provider
+62-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+63            android:name="androidx.startup.InitializationProvider"
+63-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+64            android:authorities="com.attentionguard.wear.androidx-startup"
+64-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+65            android:exported="false" >
+65-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+66            <meta-data
+66-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+67-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+68                android:value="androidx.startup" />
+68-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+69        </provider>
+70
+71        <receiver
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+72            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+72-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+73            android:directBootAware="false"
+73-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+74            android:enabled="true"
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+75            android:exported="true"
+75-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+76            android:permission="android.permission.DUMP" >
+76-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+77            <intent-filter>
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+78                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+78-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+78-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+79            </intent-filter>
+80            <intent-filter>
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+81                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+82            </intent-filter>
+83            <intent-filter>
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+84                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+85            </intent-filter>
+86            <intent-filter>
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+87                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/alakh/.gradle/caches/9.3.0/transforms/156787f592c7ec4e02e34538e835a67f/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+88            </intent-filter>
+89        </receiver>
+90    </application>
+91
+92</manifest>
