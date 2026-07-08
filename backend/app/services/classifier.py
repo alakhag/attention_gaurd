@@ -4,119 +4,143 @@ import httpx
 from app.models import Classification
 
 SYSTEM_PROMPT = """
-You classify whether an item needs user attention.
+You are the Attention Guard classifier.
 
-Return JSON only with:
-needs_attention, category, urgency, confidence, reason, recommended_action.
+The user's goal:
+They want to stop checking their phone/email/calendar compulsively.
+Only surface things that truly need attention.
 
-Categories:
-scheduling, bills_payment, real_person_waiting, work_immigration_legal,
-security_login_otp, health_family_urgent, fyi, ignore.
+Classify the item into:
+- needs_attention: true/false
+- category:
+  urgent_email, today_calendar, urgent_notification, security_login_otp,
+  bills_payment, work_immigration_legal, health_family_urgent,
+  real_person_waiting, fyi, ignore
+- urgency: now, today, later, none
+- confidence: 0 to 1
+- reason: short reason
+- recommended_action: short action
 
-Surface only if the user likely needs to act, reply, decide, attend, pay, verify, or handle risk.
+Rules:
+
+EMAIL:
+Only surface unread emails if they are genuinely urgent/actionable:
+- payment failure, bill/rent issue, account/security issue
+- legal/immigration/work deadline
+- human waiting for reply on something time-sensitive
+- travel/health/family urgent issue
+Ignore:
+- promotions
+- social
+- newsletters
+- receipts/order updates unless problem/failure
+- job recommendations unless there is a concrete deadline/action
+- generic FYI
+
+CALENDAR:
+Today's real events should usually surface because the user asked to be informed of today's important events.
+Ignore all-day holidays, birthdays, spam calendars, declined events, and passive reminders.
+For real meetings/events today, needs_attention=true, category=today_calendar.
+
+NOTIFICATIONS:
+Only surface urgent/actionable notifications:
+- real person waiting now/today
+- payment/security/health/family/calendar/work/legal/immigration
+Ignore:
+- system noise
+- charging/USB/battery
+- weather
+- ChatGPT notifications
+- social likes/comments/follows
+- promotions
+- passive FYI
 """
 
+ALLOWED_CATEGORIES = {
+    "urgent_email",
+    "today_calendar",
+    "urgent_notification",
+    "security_login_otp",
+    "bills_payment",
+    "work_immigration_legal",
+    "health_family_urgent",
+    "real_person_waiting",
+    "fyi",
+    "ignore",
+}
+ALLOWED_URGENCY = {"now", "today", "later", "none"}
+
+IGNORE_PACKAGES = {
+    "android",
+    "com.android.systemui",
+    "com.openai.chatgpt",
+    "com.google.android.googlequicksearchbox",
+}
+
 def classify_text(source: str, app_name: str | None, sender: str | None, title: str | None, body: str | None) -> Classification:
-    provider = os.getenv("CLASSIFIER_PROVIDER", "mock").lower()
-    if provider == "openai" and os.getenv("OPENAI_API_KEY"):
-        try:
-            return classify_openai(source, app_name, sender, title, body)
-        except Exception:
-            return classify_mock(source, app_name, sender, title, body)
-    return classify_mock(source, app_name, sender, title, body)
+    # Hard package/source guardrails first. AI should not waste time on obvious noise.
+    source_l = (source or "").lower()
+    app_l = (app_name or "").lower()
+    text_l = f"{source or ''} {app_name or ''} {sender or ''} {title or ''} {body or ''}".lower()
 
-def classify_mock(source, app_name, sender, title, body) -> Classification:
-    text = f"{source or ''} {app_name or ''} {sender or ''} {title or ''} {body or ''}".lower()
-
-    if any(x in text for x in ["liked your", "commented", "started following", "recommended", "sale", "coupon", "deal"]):
+    if any(pkg in text_l for pkg in IGNORE_PACKAGES):
         return Classification(
             needs_attention=False,
             category="ignore",
             urgency="none",
-            confidence=0.95,
-            reason="Passive social/promotional noise.",
+            confidence=0.99,
+            reason="Ignored system/app noise.",
             recommended_action="No action."
         )
 
-    if any(x in text for x in ["payment", "rent", "declined", "overdue", "did not go through", "didn't go through", "account locked", "suspicious transaction", "bill due", "past due"]):
+    if any(x in text_l for x in ["usb for file transfer", "charging stopped", "battery", "weather", "sunny", "forecast"]):
         return Classification(
-            needs_attention=True,
-            category="bills_payment",
-            urgency="today",
-            confidence=0.90,
-            reason="Payment, bill, rent, bank, or account issue.",
-            recommended_action="Open and verify."
+            needs_attention=False,
+            category="ignore",
+            urgency="none",
+            confidence=0.99,
+            reason="Ignored passive system/weather notification.",
+            recommended_action="No action."
         )
 
-    if any(x in text for x in ["available", "around later", "meet", "reschedule", "moved", "cancelled", "canceled", "calendar", "free later", "invitation", "accepted:", "declined:"]):
-        return Classification(
-            needs_attention=True,
-            category="scheduling",
-            urgency="today",
-            confidence=0.86,
-            reason="Scheduling, calendar, or availability item.",
-            recommended_action="Review schedule."
-        )
+    # Require real AI for actual semantic decisions.
+    if os.getenv("OPENAI_API_KEY"):
+        try:
+            return classify_openai(source, app_name, sender, title, body)
+        except Exception as e:
+            return Classification(
+                needs_attention=False,
+                category="fyi",
+                urgency="none",
+                confidence=0.0,
+                reason=f"AI classification failed: {type(e).__name__}",
+                recommended_action="Check manually if needed."
+            )
 
-    if any(x in text for x in ["uscis", "attorney", "lawyer", "immigration", "h1b", "h-1b", "o1", "o-1", "opt", "payroll", "offer letter", "hr"]):
-        return Classification(
-            needs_attention=True,
-            category="work_immigration_legal",
-            urgency="today",
-            confidence=0.90,
-            reason="Work, legal, immigration, HR, or payroll item.",
-            recommended_action="Review soon."
-        )
-
-    if any(x in text for x in ["otp", "verification code", "password reset", "login", "sign-in", "suspicious", "security alert", "new sign-in"]):
-        return Classification(
-            needs_attention=True,
-            category="security_login_otp",
-            urgency="now",
-            confidence=0.82,
-            reason="Login, security, or OTP item.",
-            recommended_action="Verify if expected."
-        )
-
-    if any(x in text for x in ["urgent", "doctor", "hospital", "bp", "blood pressure", "emergency", "flight issue", "call immediately"]):
-        return Classification(
-            needs_attention=True,
-            category="health_family_urgent",
-            urgency="now",
-            confidence=0.90,
-            reason="Urgent health, family, or travel signal.",
-            recommended_action="Check now."
-        )
-
-    if any(x in text for x in ["?", "can you", "could you", "please", "call me", "reply", "confirm", "let me know", "when free", "please join now", "join now"]):
-        return Classification(
-            needs_attention=True,
-            category="real_person_waiting",
-            urgency="today",
-            confidence=0.78,
-            reason="Someone may be asking for response/action.",
-            recommended_action="Reply or review when available."
-        )
-
+    # No mock fallback. If no AI key, fail closed.
     return Classification(
         needs_attention=False,
         category="fyi",
         urgency="none",
-        confidence=0.60,
-        reason="No clear action needed.",
-        recommended_action="No immediate action."
+        confidence=0.0,
+        reason="AI classifier not configured.",
+        recommended_action="Set OPENAI_API_KEY and CLASSIFIER_PROVIDER=openai."
     )
 
 def classify_openai(source, app_name, sender, title, body) -> Classification:
     api_key = os.getenv("OPENAI_API_KEY")
     model = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+
     payload = {
         "model": model,
         "input": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": json.dumps({
-                "source": source, "app_name": app_name, "sender": sender,
-                "title": title, "body": body
+                "source": source,
+                "app_name": app_name,
+                "sender": sender,
+                "title": title,
+                "body": body,
             })}
         ],
         "text": {
@@ -126,14 +150,24 @@ def classify_openai(source, app_name, sender, title, body) -> Classification:
                 "schema": {
                     "type": "object",
                     "additionalProperties": False,
-                    "required": ["needs_attention", "category", "urgency", "confidence", "reason", "recommended_action"],
+                    "required": [
+                        "needs_attention",
+                        "category",
+                        "urgency",
+                        "confidence",
+                        "reason",
+                        "recommended_action"
+                    ],
                     "properties": {
                         "needs_attention": {"type": "boolean"},
-                        "category": {"type": "string", "enum": [
-                            "scheduling", "bills_payment", "real_person_waiting", "work_immigration_legal",
-                            "security_login_otp", "health_family_urgent", "fyi", "ignore"
-                        ]},
-                        "urgency": {"type": "string", "enum": ["now", "today", "this_week", "later", "none"]},
+                        "category": {
+                            "type": "string",
+                            "enum": sorted(ALLOWED_CATEGORIES)
+                        },
+                        "urgency": {
+                            "type": "string",
+                            "enum": sorted(ALLOWED_URGENCY)
+                        },
                         "confidence": {"type": "number"},
                         "reason": {"type": "string"},
                         "recommended_action": {"type": "string"}
@@ -143,10 +177,14 @@ def classify_openai(source, app_name, sender, title, body) -> Classification:
             }
         }
     }
-    with httpx.Client(timeout=20) as client:
+
+    with httpx.Client(timeout=30) as client:
         r = client.post(
             "https://api.openai.com/v1/responses",
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            },
             json=payload
         )
         r.raise_for_status()
@@ -162,4 +200,16 @@ def classify_openai(source, app_name, sender, title, body) -> Classification:
             if text:
                 break
 
-    return Classification(**json.loads(text))
+    if not text:
+        raise RuntimeError("No output_text from OpenAI")
+
+    parsed = json.loads(text)
+
+    # Defensive validation.
+    if parsed.get("category") not in ALLOWED_CATEGORIES:
+        parsed["category"] = "fyi"
+        parsed["needs_attention"] = False
+    if parsed.get("urgency") not in ALLOWED_URGENCY:
+        parsed["urgency"] = "none"
+
+    return Classification(**parsed)

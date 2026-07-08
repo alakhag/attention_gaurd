@@ -1,6 +1,7 @@
 from uuid import uuid4
 from app.db import db, now_iso
 from app.services.classifier import classify_text
+from app.models import Classification
 
 def insert_and_classify(source, source_item_id, account_email=None, device_id=None, package_name=None,
                         app_name=None, sender=None, title=None, body=None, timestamp=None):
@@ -22,14 +23,57 @@ def insert_and_classify(source, source_item_id, account_email=None, device_id=No
               sender, title, body, timestamp, created))
 
     c = classify_text(source, app_name, sender, title, body)
+    return save_classification(item_id, class_id, c, created)
 
+def insert_forced_attention(source, source_item_id, account_email=None, device_id=None, package_name=None,
+                            app_name=None, sender=None, title=None, body=None, timestamp=None,
+                            category="today_calendar", urgency="today", reason="Needs attention.",
+                            recommended_action="Review."):
+    item_id = f"item_{uuid4().hex}"
+    class_id = f"class_{uuid4().hex}"
+    created = now_iso()
+    timestamp = timestamp or created
+
+    with db() as conn:
+        existing = conn.execute("SELECT id FROM items WHERE source_item_id = ?", (source_item_id,)).fetchone()
+        if existing:
+            return {"deduped": True, "item_id": existing["id"]}
+
+        conn.execute("""
+            INSERT INTO items (id, source, source_item_id, account_email, device_id, package_name, app_name,
+                               sender, title, body, timestamp, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (item_id, source, source_item_id, account_email, device_id, package_name, app_name,
+              sender, title, body, timestamp, created))
+
+    c = Classification(
+        needs_attention=True,
+        category=category,
+        urgency=urgency,
+        confidence=1.0,
+        reason=reason,
+        recommended_action=recommended_action
+    )
+    return save_classification(item_id, class_id, c, created)
+
+def save_classification(item_id, class_id, c, created):
     attn_id = None
+
     with db() as conn:
         conn.execute("""
             INSERT INTO classifications (id, item_id, needs_attention, category, urgency, confidence, reason, recommended_action, created_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (class_id, item_id, 1 if c.needs_attention else 0, c.category, c.urgency,
-              c.confidence, c.reason, c.recommended_action, created))
+        """, (
+            class_id,
+            item_id,
+            1 if c.needs_attention else 0,
+            c.category,
+            c.urgency,
+            c.confidence,
+            c.reason,
+            c.recommended_action,
+            created
+        ))
 
         if c.needs_attention:
             attn_id = f"attn_{uuid4().hex}"
@@ -84,7 +128,14 @@ def list_attention_items():
             JOIN items i ON i.id = ai.item_id
             JOIN classifications c ON c.item_id = i.id
             WHERE ai.status = 'active'
-            ORDER BY ai.surfaced_at DESC
+            ORDER BY
+              CASE c.urgency
+                WHEN 'now' THEN 0
+                WHEN 'today' THEN 1
+                WHEN 'later' THEN 2
+                ELSE 3
+              END,
+              ai.surfaced_at DESC
         """).fetchall()
     return [dict(r) for r in rows]
 
@@ -111,6 +162,7 @@ def phone_payload():
                 "title": x["title"] or x["sender"] or x["app_name"] or x["source"],
                 "body": x["body"] or x["reason"],
                 "source": x["source"],
+                "account_email": x.get("account_email"),
                 "category": x["category"],
                 "urgency": x["urgency"],
                 "reason": x["reason"],

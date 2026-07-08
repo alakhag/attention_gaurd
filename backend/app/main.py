@@ -13,7 +13,7 @@ from app.services.google_connectors import (
 )
 import json
 
-app = FastAPI(title="Attention OS", version="1.0")
+app = FastAPI(title="Attention OS", version="1.1")
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
@@ -40,7 +40,7 @@ def dashboard():
 
 @app.get("/health")
 def health():
-    return {"ok": True, "version": "attention-os-v1"}
+    return {"ok": True, "version": "attention-os-v1.1"}
 
 @app.get("/auth/google/start")
 def google_start():
@@ -107,6 +107,28 @@ async def android_notifications(payload: AndroidNotificationIn):
     await broadcast()
     return {"accepted": True, "decision": result, "phone": phone_payload(), "status": get_status()}
 
+@app.post("/debug/reset")
+async def debug_reset():
+    from app.db import db
+    with db() as conn:
+        conn.execute("DELETE FROM attention_items")
+        conn.execute("DELETE FROM classifications")
+        conn.execute("DELETE FROM items")
+        # Keep google_accounts so you do not need to reconnect.
+    await broadcast()
+    return {"ok": True, "message": "Cleared items, classifications, and attention state. Google accounts kept.", "phone": phone_payload()}
+
+@app.post("/debug/reset-all")
+async def debug_reset_all():
+    from app.db import db
+    with db() as conn:
+        conn.execute("DELETE FROM attention_items")
+        conn.execute("DELETE FROM classifications")
+        conn.execute("DELETE FROM items")
+        conn.execute("DELETE FROM google_accounts")
+    await broadcast()
+    return {"ok": True, "message": "Cleared everything including Google accounts.", "phone": phone_payload()}
+
 @app.get("/debug/items")
 def debug_items():
     from app.db import db
@@ -117,75 +139,6 @@ def debug_items():
             ORDER BY i.created_at DESC LIMIT 100
         """).fetchall()
     return {"items": [dict(r) for r in rows]}
-
-@app.post("/debug/reclassify-all")
-def debug_reclassify_all():
-    from uuid import uuid4
-    from app.db import db, now_iso
-    from app.services.classifier import classify_text
-
-    created = 0
-    surfaced = 0
-
-    with db() as conn:
-        rows = conn.execute("""
-            SELECT i.*
-            FROM items i
-            LEFT JOIN classifications c ON c.item_id = i.id
-            WHERE c.id IS NULL
-            ORDER BY i.created_at DESC
-            LIMIT 500
-        """).fetchall()
-
-        for i in rows:
-            c = classify_text(
-                source=i["source"],
-                app_name=i["app_name"],
-                sender=i["sender"],
-                title=i["title"],
-                body=i["body"]
-            )
-
-            class_id = f"class_{uuid4().hex}"
-            conn.execute("""
-                INSERT INTO classifications
-                (id, item_id, needs_attention, category, urgency, confidence, reason, recommended_action, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                class_id,
-                i["id"],
-                1 if c.needs_attention else 0,
-                c.category,
-                c.urgency,
-                c.confidence,
-                c.reason,
-                c.recommended_action,
-                now_iso()
-            ))
-
-            created += 1
-
-            if c.needs_attention:
-                existing = conn.execute(
-                    "SELECT id FROM attention_items WHERE item_id = ?",
-                    (i["id"],)
-                ).fetchone()
-
-                if not existing:
-                    attn_id = f"attn_{uuid4().hex}"
-                    conn.execute("""
-                        INSERT INTO attention_items
-                        (id, item_id, status, surfaced_at)
-                        VALUES (?, ?, 'active', ?)
-                    """, (attn_id, i["id"], now_iso()))
-                    surfaced += 1
-
-    return {
-        "ok": True,
-        "classified": created,
-        "surfaced": surfaced,
-        "phone": phone_payload()
-    }
 
 @app.websocket("/ws")
 async def websocket(ws: WebSocket):
