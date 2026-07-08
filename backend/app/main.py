@@ -1,91 +1,132 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-
 from app.db import init_db
-from app.models import AndroidNotificationIn, StatusOut
-from app.services.logic import (
-    ingest_notification,
-    get_status,
-    list_attention_items,
-    update_attention_status,
-    list_items,
+from app.models import AndroidNotificationIn
+from app.services.attention import (
+    insert_and_classify, get_status, list_attention_items,
+    set_attention_status, phone_payload
 )
-from app.services.realtime import hub
+from app.services.google_connectors import (
+    auth_url, exchange_code, connected_accounts, sync_all_google
+)
+import json
 
-app = FastAPI(title="Attention Guard Realtime", version="0.3.0-deployable")
-
+app = FastAPI(title="Attention OS", version="1.0")
 static_dir = Path(__file__).parent / "static"
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+connections = set()
 
 @app.on_event("startup")
 def startup():
     init_db()
 
+async def broadcast():
+    payload = json.dumps({"type": "phone", "phone": phone_payload()})
+    dead = []
+    for ws in list(connections):
+        try:
+            await ws.send_text(payload)
+        except Exception:
+            dead.append(ws)
+    for ws in dead:
+        connections.discard(ws)
 
 @app.get("/")
 def dashboard():
     return FileResponse(static_dir / "index.html")
 
-
 @app.get("/health")
 def health():
-    return {"ok": True, "version": "0.3.0-deployable"}
+    return {"ok": True, "version": "attention-os-v1"}
 
+@app.get("/auth/google/start")
+def google_start():
+    return RedirectResponse(auth_url())
 
-@app.get("/status", response_model=StatusOut)
+@app.get("/auth/google/callback")
+def google_callback(code: str | None = None, error: str | None = None):
+    if error:
+        return HTMLResponse(f"Google auth error: {error}", status_code=400)
+    if not code:
+        return HTMLResponse("Missing code", status_code=400)
+    email = exchange_code(code)
+    return HTMLResponse(f"<h2>Connected {email}</h2><p><a href='/'>Back to Attention OS</a></p>")
+
+@app.get("/accounts/google")
+def google_accounts():
+    return {"accounts": connected_accounts()}
+
+@app.post("/sync/google")
+async def sync_google():
+    result = sync_all_google()
+    await broadcast()
+    return {"ok": True, "result": result, "phone": phone_payload()}
+
+@app.get("/status")
 def status():
     return get_status()
-
 
 @app.get("/attention-items")
 def attention_items():
     return {"items": list_attention_items()}
 
-
-@app.post("/attention-items/{attention_id}/dismiss")
-async def dismiss(attention_id: str):
-    ok = update_attention_status(attention_id, "dismissed")
-    if not ok:
-        raise HTTPException(status_code=404, detail="attention item not found")
-    s = get_status()
-    await hub.broadcast({"type": "status", "status": s})
-    return {"ok": True, "status": s}
-
+@app.get("/phone")
+def phone():
+    return phone_payload()
 
 @app.post("/attention-items/{attention_id}/resolve")
 async def resolve(attention_id: str):
-    ok = update_attention_status(attention_id, "resolved")
-    if not ok:
-        raise HTTPException(status_code=404, detail="attention item not found")
-    s = get_status()
-    await hub.broadcast({"type": "status", "status": s})
-    return {"ok": True, "status": s}
+    if not set_attention_status(attention_id, "resolved"):
+        raise HTTPException(404, "attention item not found")
+    await broadcast()
+    return {"ok": True, "phone": phone_payload()}
 
+@app.post("/attention-items/{attention_id}/dismiss")
+async def dismiss(attention_id: str):
+    if not set_attention_status(attention_id, "dismissed"):
+        raise HTTPException(404, "attention item not found")
+    await broadcast()
+    return {"ok": True, "phone": phone_payload()}
 
 @app.post("/android/notifications")
-async def android_notification(payload: AndroidNotificationIn):
-    decision = ingest_notification(payload)
-    s = get_status()
-    await hub.broadcast({"type": "update", "status": s, "decision": decision})
-    return {"accepted": True, "decision": decision, "status": s}
-
+async def android_notifications(payload: AndroidNotificationIn):
+    result = insert_and_classify(
+        source="android_notification",
+        source_item_id=f"android:{payload.notification_key}",
+        device_id=payload.device_id,
+        package_name=payload.package_name,
+        app_name=payload.app_name,
+        sender=payload.title,
+        title=payload.title,
+        body=payload.body,
+        timestamp=payload.timestamp.isoformat() if payload.timestamp else None,
+    )
+    await broadcast()
+    return {"accepted": True, "decision": result, "phone": phone_payload(), "status": get_status()}
 
 @app.get("/debug/items")
 def debug_items():
-    return {"items": list_items()}
+    from app.db import db
+    with db() as conn:
+        rows = conn.execute("""
+            SELECT i.*, c.needs_attention, c.category, c.urgency, c.reason, c.recommended_action
+            FROM items i LEFT JOIN classifications c ON c.item_id=i.id
+            ORDER BY i.created_at DESC LIMIT 100
+        """).fetchall()
+    return {"items": [dict(r) for r in rows]}
 
-
-@app.websocket("/ws/status")
-async def ws_status(websocket: WebSocket):
-    await hub.connect(websocket)
+@app.websocket("/ws")
+async def websocket(ws: WebSocket):
+    await ws.accept()
+    connections.add(ws)
     try:
-        await websocket.send_json({"type": "status", "status": get_status()})
+        await ws.send_text(json.dumps({"type": "phone", "phone": phone_payload()}))
         while True:
-            await websocket.receive_text()
+            await ws.receive_text()
     except WebSocketDisconnect:
-        hub.disconnect(websocket)
+        connections.discard(ws)
     except Exception:
-        hub.disconnect(websocket)
+        connections.discard(ws)

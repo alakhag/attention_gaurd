@@ -1,67 +1,97 @@
-# Attention Guard — Realtime Deployable Prototype
+# Attention OS V1
 
-This is a deliberately simple, imperfect, deployable prototype.
-
-It does this:
+This is the first integrated version:
 
 ```text
-Android notification / fake test notification
-↓
-POST /android/notifications
-↓
-classifier decides attention vs not attention
-↓
-SQLite stores item
-↓
-dashboard updates live via WebSocket
-↓
-status becomes:
-  Nothing important missed
-  or
-  X things need attention
+Gmail API
+Google Calendar API
+Android Notification Listener
+        ↓
+Attention Engine backend
+        ↓
+Phone notification
+Galaxy Watch app
+Web dashboard
 ```
 
-## Included
+## What works
 
-- FastAPI backend
+Backend:
+- Google OAuth connect endpoint
+- Gmail read sync
+- Calendar read sync
+- Android notification ingestion
+- unified `/phone` endpoint
+- attention item Done/Later endpoints
 - SQLite persistence
-- WebSocket live dashboard
-- Notification ingestion API
-- Attention item dismiss/resolve
-- Mock AI classifier
-- Optional OpenAI classifier hook
-- Dockerfile
-- Render deploy config
-- Android NotificationListenerService bridge skeleton
+- web dashboard
 
-## Quick local run
+Phone app:
+- listens to notifications
+- sends notifications to backend
+- shows Attention Guard summary notification
+- shows per-item Done/Later notifications
 
-```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+Wear OS app:
+- fetches `/phone`
+- shows Clear / X things need attention
+- Done / Later on first active item
+- manual refresh
+
+## What is still rough
+
+- No production auth
+- No encrypted token storage
+- No Google verification flow/publishing
+- No background scheduler
+- No FCM push
+- Wear app is an app, not a Tile yet
+- Mock classifier unless you set OpenAI env vars
+
+## Backend deploy
+
+Render settings:
+
+```text
+Root Directory: backend
+Build Command: pip install -r requirements.txt
+Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+Health Check Path: /health
 ```
+
+Environment variables:
+
+```text
+PUBLIC_BASE_URL=https://your-render-url.onrender.com
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+CLASSIFIER_PROVIDER=mock
+DB_PATH=/tmp/attention_os.db
+```
+
+Google redirect URI:
+
+```text
+https://your-render-url.onrender.com/auth/google/callback
+```
+
+## Android
 
 Open:
 
 ```text
-http://127.0.0.1:8000
+android/AttentionGuardOS
 ```
 
-## Test
+in Android Studio.
 
-```bash
-bash test_live.sh
+Edit backend URLs in:
+
+```text
+app/src/main/java/com/attentionguard/os/BackendClient.kt
+wear/src/main/java/com/attentionguard/wear/WearBackendClient.kt
 ```
 
-## Deploy to Render
+Set both to your Render URL.
 
-1. Push this repo to GitHub.
-2. Render → New → Web Service.
-3. Root directory: `backend`
-4. Build command: `pip install -r requirements.txt`
-5. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-
-Default classifier is `mock`, so no API key is required.
+Run `app` on phone. Run `wear` on Galaxy Watch.

@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 class AndroidNotificationIn(BaseModel):
-    device_id: str = "dev1"
+    device_id: str = "android-phone"
     package_name: str
     app_name: str
     title: Optional[str] = None
@@ -20,11 +20,3 @@ class Classification(BaseModel):
     confidence: float = Field(ge=0, le=1)
     reason: str
     recommended_action: str
-
-
-class StatusOut(BaseModel):
-    status: str
-    attention_count: int
-    summary: str
-    top_items: list[str] = []
-    last_checked_at: Optional[str] = None

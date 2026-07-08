@@ -1,191 +1,98 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>Attention Guard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <title>Attention OS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: #0f1115; color: #f5f5f5; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 28px; }
-    .card { background: #181b22; border: 1px solid #282d38; border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
-    .status { font-size: 34px; font-weight: 800; margin: 8px 0; }
-    .muted { color: #9aa4b2; }
-    .pill { display: inline-block; padding: 5px 10px; border-radius: 99px; background: #222938; color: #cbd5e1; font-size: 13px; margin-right: 8px; }
-    button { background: #e5e7eb; border: 0; border-radius: 10px; padding: 9px 12px; margin: 4px; cursor: pointer; }
-    button.primary { background: #7dd3fc; color: #06131a; font-weight: 700; }
-    input, textarea { width: 100%; box-sizing: border-box; padding: 10px; margin: 6px 0 10px; border-radius: 10px; border: 1px solid #334155; background: #0b0d12; color: #f8fafc; }
-    .item { border-top: 1px solid #2a3040; padding: 14px 0; }
-    .item:first-child { border-top: 0; }
-    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .danger { color: #fca5a5; }
-    .ok { color: #86efac; }
-    .attention { color: #fde68a; }
-    code { background: #0b0d12; padding: 2px 5px; border-radius: 6px; }
+    body{margin:0;font-family:system-ui;background:#0f1115;color:#f8fafc}
+    .wrap{max-width:900px;margin:0 auto;padding:28px}
+    .card{background:#181b22;border:1px solid #2a3040;border-radius:18px;padding:22px;margin-bottom:18px}
+    .status{font-size:34px;font-weight:800}
+    .muted{color:#9aa4b2}
+    button,a.btn{background:#7dd3fc;color:#06131a;border:0;border-radius:10px;padding:10px 14px;margin:4px;text-decoration:none;display:inline-block;font-weight:700}
+    .item{border-top:1px solid #2a3040;padding:12px 0}
+    .pill{display:inline-block;background:#222938;border-radius:99px;padding:4px 9px;margin:3px;color:#cbd5e1;font-size:13px}
+    input,textarea{width:100%;box-sizing:border-box;padding:10px;background:#0b0d12;color:white;border:1px solid #334155;border-radius:10px;margin:6px 0}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="muted">Attention Guard</div>
-      <div id="statusText" class="status">Loading…</div>
-      <div id="details" class="muted"></div>
-      <div style="margin-top: 12px;">
-        <span id="wsState" class="pill">WebSocket: connecting</span>
-        <span id="lastChecked" class="pill">Last checked: —</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Needs attention</h2>
-      <div id="items" class="muted">Loading…</div>
-    </div>
-
-    <div class="card">
-      <h2>Send fake notification</h2>
-      <div class="muted">Use this until Android bridge is wired.</div>
-      <label>App name</label>
-      <input id="appName" value="WhatsApp" />
-      <label>Package name</label>
-      <input id="packageName" value="com.whatsapp" />
-      <label>Title / sender</label>
-      <input id="title" value="Mom" />
-      <label>Body</label>
-      <textarea id="body" rows="3">Can you call me when free?</textarea>
-      <button class="primary" onclick="sendFake()">Send notification</button>
-      <button onclick="sendNoise()">Send Instagram noise</button>
-      <button onclick="sendPayment()">Send payment issue</button>
-    </div>
-
-    <div class="card">
-      <h2>API</h2>
-      <div class="muted">
-        Docs: <code>/docs</code><br/>
-        Status: <code>/status</code><br/>
-        Ingest: <code>POST /android/notifications</code><br/>
-        WebSocket: <code>/ws/status</code>
-      </div>
-    </div>
+<div class="wrap">
+  <div class="card">
+    <div class="muted">Attention OS</div>
+    <div id="summary" class="status">Loading…</div>
+    <div id="details" class="muted"></div>
+    <p>
+      <a class="btn" href="/auth/google/start">Connect Google</a>
+      <button onclick="syncGoogle()">Sync Google Now</button>
+      <button onclick="refresh()">Refresh</button>
+    </p>
   </div>
 
+  <div class="card">
+    <h2>Attention items</h2>
+    <div id="items">Loading…</div>
+  </div>
+
+  <div class="card">
+    <h2>Fake notification test</h2>
+    <input id="app" value="WhatsApp"/>
+    <input id="title" value="Mom"/>
+    <textarea id="body">Can you call me when free?</textarea>
+    <button onclick="sendFake()">Send fake notification</button>
+  </div>
+
+  <div class="card">
+    <h2>Google accounts</h2>
+    <div id="accounts" class="muted">Loading…</div>
+  </div>
+</div>
+
 <script>
-let ws;
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 
-function statusClass(status) {
-  if (status === "clear") return "ok";
-  if (status === "needs_attention") return "attention";
-  return "danger";
+async function refresh(){
+  const p = await fetch("/phone").then(r=>r.json());
+  render(p);
+  const a = await fetch("/accounts/google").then(r=>r.json());
+  document.getElementById("accounts").innerHTML = a.accounts.length ? a.accounts.map(x=>esc(x.email)).join("<br>") : "No Google accounts connected";
 }
-
-async function refresh() {
-  const s = await fetch("/status").then(r => r.json());
-  renderStatus(s);
-  await refreshItems();
-}
-
-function renderStatus(s) {
-  const el = document.getElementById("statusText");
-  el.textContent = s.summary;
-  el.className = "status " + statusClass(s.status);
-  document.getElementById("details").textContent =
-    s.top_items && s.top_items.length ? s.top_items.join(" · ") : "No active attention items.";
-  document.getElementById("lastChecked").textContent =
-    "Last checked: " + (s.last_checked_at || "—");
-}
-
-async function refreshItems() {
-  const data = await fetch("/attention-items").then(r => r.json());
+function render(p){
+  document.getElementById("summary").textContent = p.summary;
+  document.getElementById("details").textContent = p.items?.length ? p.items.map(x=>x.title).join(" · ") : "Clear";
   const root = document.getElementById("items");
-
-  if (!data.items.length) {
-    root.innerHTML = "<div class='ok'>Nothing active.</div>";
-    return;
-  }
-
-  root.innerHTML = data.items.map(item => `
+  if(!p.items?.length){ root.innerHTML = "<div class='muted'>Nothing active.</div>"; return; }
+  root.innerHTML = p.items.map(x=>`
     <div class="item">
-      <div class="row">
-        <strong>${escapeHtml(item.title || item.app_name || "Unknown")}</strong>
-        <span class="pill">${escapeHtml(item.category)}</span>
-        <span class="pill">${escapeHtml(item.urgency)}</span>
-      </div>
-      <div style="margin-top: 6px;">${escapeHtml(item.body || "")}</div>
-      <div class="muted" style="margin-top: 6px;">${escapeHtml(item.reason || "")}</div>
-      <div class="muted">Action: ${escapeHtml(item.recommended_action || "")}</div>
-      <div style="margin-top: 8px;">
-        <button onclick="dismissItem('${item.attention_id}')">Dismiss</button>
-        <button onclick="resolveItem('${item.attention_id}')">Resolve</button>
-      </div>
+      <strong>${esc(x.title)}</strong>
+      <span class="pill">${esc(x.source)}</span>
+      <span class="pill">${esc(x.category)}</span>
+      <div>${esc(x.body)}</div>
+      <div class="muted">${esc(x.reason)}</div>
+      <button onclick="done('${x.id}')">Done</button>
+      <button onclick="later('${x.id}')">Later</button>
     </div>
   `).join("");
 }
-
-function connectWs() {
-  const scheme = location.protocol === "https:" ? "wss" : "ws";
-  ws = new WebSocket(`${scheme}://${location.host}/ws/status`);
-  ws.onopen = () => { document.getElementById("wsState").textContent = "WebSocket: live"; };
-  ws.onclose = () => {
-    document.getElementById("wsState").textContent = "WebSocket: disconnected";
-    setTimeout(connectWs, 1500);
-  };
-  ws.onerror = () => { document.getElementById("wsState").textContent = "WebSocket: error"; };
-  ws.onmessage = async (event) => {
-    const msg = JSON.parse(event.data);
-    if (msg.status) renderStatus(msg.status);
-    await refreshItems();
-  };
-  setInterval(() => {
-    if (ws && ws.readyState === WebSocket.OPEN) ws.send("ping");
-  }, 20000);
+async function done(id){ await fetch(`/attention-items/${id}/resolve`,{method:"POST"}); refresh(); }
+async function later(id){ await fetch(`/attention-items/${id}/dismiss`,{method:"POST"}); refresh(); }
+async function syncGoogle(){ await fetch("/sync/google",{method:"POST"}); refresh(); }
+async function sendFake(){
+  await fetch("/android/notifications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+    device_id:"web", package_name:"web.fake", app_name:document.getElementById("app").value,
+    title:document.getElementById("title").value, body:document.getElementById("body").value,
+    notification_key:"web_"+Date.now()
+  })});
+  refresh();
 }
-
-async function sendFake() {
-  const payload = {
-    device_id: "web-test",
-    package_name: document.getElementById("packageName").value,
-    app_name: document.getElementById("appName").value,
-    title: document.getElementById("title").value,
-    body: document.getElementById("body").value,
-    notification_key: "web_" + Date.now()
-  };
-  await fetch("/android/notifications", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
-  });
+function ws(){
+  const scheme = location.protocol==="https:" ? "wss":"ws";
+  const socket = new WebSocket(`${scheme}://${location.host}/ws`);
+  socket.onmessage = e => { const msg=JSON.parse(e.data); if(msg.phone) render(msg.phone); };
+  socket.onclose = () => setTimeout(ws,1500);
+  setInterval(()=>{ if(socket.readyState===1) socket.send("ping") },20000);
 }
-
-async function sendNoise() {
-  document.getElementById("appName").value = "Instagram";
-  document.getElementById("packageName").value = "com.instagram.android";
-  document.getElementById("title").value = "Instagram";
-  document.getElementById("body").value = "someone liked your reel";
-  await sendFake();
-}
-
-async function sendPayment() {
-  document.getElementById("appName").value = "Gmail";
-  document.getElementById("packageName").value = "com.google.android.gm";
-  document.getElementById("title").value = "RentCafe";
-  document.getElementById("body").value = "Your rent payment did not go through.";
-  await sendFake();
-}
-
-async function dismissItem(id) {
-  await fetch(`/attention-items/${id}/dismiss`, {method: "POST"});
-}
-
-async function resolveItem(id) {
-  await fetch(`/attention-items/${id}/resolve`, {method: "POST"});
-}
-
-function escapeHtml(s) {
-  return String(s || "").replace(/[&<>"']/g, m => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
-  }[m]));
-}
-
-connectWs();
-refresh();
+refresh(); ws();
 </script>
 </body>
 </html>
