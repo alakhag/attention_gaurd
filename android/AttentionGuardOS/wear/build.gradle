@@ -23,4 +23,7 @@ android {
 dependencies {
     implementation "androidx.core:core-ktx:1.13.1"
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
+
+    // Wear OS complication data source.
+    implementation "androidx.wear.watchface:watchface-complications-data-source:1.2.1"
 }
