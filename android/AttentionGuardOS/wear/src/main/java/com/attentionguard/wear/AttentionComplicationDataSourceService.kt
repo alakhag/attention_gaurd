@@ -30,18 +30,11 @@ class AttentionComplicationDataSourceService : ComplicationDataSourceService() {
     }
 
     override fun getPreviewData(type: ComplicationType): ComplicationData {
-        return when (type) {
-            ComplicationType.LONG_TEXT -> buildLongData(
-                text = "Nothing important missed",
-                title = "Attention Guard",
-                contentDescription = "Attention Guard clear"
-            )
-            else -> buildShortData(
-                text = "Clear",
-                title = "✓",
-                contentDescription = "Attention Guard clear"
-            )
-        }
+        return buildShortData(
+            text = "✓",
+            title = "Clear",
+            contentDescription = "Attention Guard clear"
+        )
     }
 
     private fun buildComplicationData(type: ComplicationType, payload: JSONObject): ComplicationData {
@@ -62,8 +55,8 @@ class AttentionComplicationDataSourceService : ComplicationDataSourceService() {
                     contentDescription = "Attention Guard: nothing important missed"
                 )
                 else -> buildShortData(
-                    text = "Clear",
-                    title = "✓",
+                    text = "✓",
+                    title = "Clear",
                     contentDescription = "Attention Guard clear"
                 )
             }
@@ -91,8 +84,8 @@ class AttentionComplicationDataSourceService : ComplicationDataSourceService() {
                 contentDescription = "Attention Guard could not check"
             )
             else -> buildShortData(
-                text = "Check",
-                title = "!",
+                text = "!",
+                title = "Check",
                 contentDescription = "Attention Guard could not check"
             )
         }
