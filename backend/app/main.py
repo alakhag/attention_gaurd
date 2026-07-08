@@ -118,6 +118,75 @@ def debug_items():
         """).fetchall()
     return {"items": [dict(r) for r in rows]}
 
+@app.post("/debug/reclassify-all")
+def debug_reclassify_all():
+    from uuid import uuid4
+    from app.db import db, now_iso
+    from app.services.classifier import classify_text
+
+    created = 0
+    surfaced = 0
+
+    with db() as conn:
+        rows = conn.execute("""
+            SELECT i.*
+            FROM items i
+            LEFT JOIN classifications c ON c.item_id = i.id
+            WHERE c.id IS NULL
+            ORDER BY i.created_at DESC
+            LIMIT 500
+        """).fetchall()
+
+        for i in rows:
+            c = classify_text(
+                source=i["source"],
+                app_name=i["app_name"],
+                sender=i["sender"],
+                title=i["title"],
+                body=i["body"]
+            )
+
+            class_id = f"class_{uuid4().hex}"
+            conn.execute("""
+                INSERT INTO classifications
+                (id, item_id, needs_attention, category, urgency, confidence, reason, recommended_action, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                class_id,
+                i["id"],
+                1 if c.needs_attention else 0,
+                c.category,
+                c.urgency,
+                c.confidence,
+                c.reason,
+                c.recommended_action,
+                now_iso()
+            ))
+
+            created += 1
+
+            if c.needs_attention:
+                existing = conn.execute(
+                    "SELECT id FROM attention_items WHERE item_id = ?",
+                    (i["id"],)
+                ).fetchone()
+
+                if not existing:
+                    attn_id = f"attn_{uuid4().hex}"
+                    conn.execute("""
+                        INSERT INTO attention_items
+                        (id, item_id, status, surfaced_at)
+                        VALUES (?, ?, 'active', ?)
+                    """, (attn_id, i["id"], now_iso()))
+                    surfaced += 1
+
+    return {
+        "ok": True,
+        "classified": created,
+        "surfaced": surfaced,
+        "phone": phone_payload()
+    }
+
 @app.websocket("/ws")
 async def websocket(ws: WebSocket):
     await ws.accept()
